@@ -1,12 +1,24 @@
 const socket = io('http://localhost:3000');
 
+$('#div-chat').hide();
+
 socket.on('DANH_SACH_ONLINE', arrUserInfo => {
-    console.log(arrUserInfo);
+    $('#div-chat').show();
+    $('#div-dang-ky').hide();
+    
+    arrUserInfo.forEach(user => {
+        const { ten, peerId } = user;
+        $('#ulUser').append(`<li id="${peerId}">${ten}</li>`);
+    });
+
+    socket.on('CO_NGUOI_DUNG_MOI', user => {
+        const { ten, peerId } = user;
+        $('#ulUser').append(`<li id="${peerId}">${ten}</li>`);
+    });
 });
 
-socket.on('CO_NGUOI_DUNG_MOI', user => {
-    console.log(user);
-});
+socket.on('DANG_KY_THAT_BAT', () => alert('Vui long chon username khac!'));
+
 
 function openStream() {
     const config = { audio: false, video: true };
