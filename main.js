@@ -38,7 +38,7 @@ function playStream(idVideoTag, stream) {
 // openStream()
 // .then(stream => playStream('localStream', stream));
 
-const peer = new Peer({ key: 'tkv5g2acaree9udi' });
+const peer = new Peer({ key: 'peerjs', host: 'peerkpt.herokuapp.com', port: 443, secure: true });
 
 peer.on('open', id => {
     $('#my-peer').append(id);
@@ -69,4 +69,13 @@ peer.on('call', call => {
     });
 });
 
-
+$('#ulUser').on('click', 'li', function() {
+    const id = $(this).attr('id');
+    console.log(id);
+    openStream()
+    .then(stream => {
+        playStream('localStream', stream);
+        const call = peer.call(id, stream);
+        call.on('stream', remoteStream => playStream('remoteStream', remoteStream));
+    });
+});
