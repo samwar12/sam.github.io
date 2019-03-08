@@ -1,4 +1,4 @@
-const socket = io('https://samwar11.herokuapp.com/');
+const socket = io('https://github.com/samwar12/sam.github.io');
 
 $('#div-chat').hide();
 
@@ -9,7 +9,7 @@ $.ajax({
   data: {
     ident: "samwar11",
     secret: "bec4837c-40a6-11e9-a62a-0242ac110003",
-    domain: "sam.github.io",
+    domain: "https://github.com/samwar12/sam.github.io",
     application: "default",
     room: "default",
     secure: 1
