@@ -1,15 +1,15 @@
-const socket = io('https://github.com/samwar12/sam.github.io');
+const socket = io('https://samwar11.herokuapp.com/');
 
 $('#div-chat').hide();
 
 let customConfig;
 
 $.ajax({
-  url: "https://global.xirsys.net",
+  url: "https://global.xirsys.net/_turn/MyFirstApp/",
   data: {
     ident: "samwar11",
     secret: "bec4837c-40a6-11e9-a62a-0242ac110003",
-    domain: "https://github.com/samwar12/sam.github.io",
+    domain: "sam.github.io",
     application: "default",
     room: "default",
     secure: 1
