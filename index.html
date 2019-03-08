@@ -1,17 +1,23 @@
 <DOCTYPE>
 <html>
-   <head>
-       <title>Xirsys XSDK: WebRTC Example </title>
-       <link rel="stylesheet" type="text/css" href="https://global.xirsys.net/xsdk/quickstart/xsdk.css"></link>
-       <script src="https://global.xirsys.net/xsdk/quickstart/xsdk.js"></script>
-       <script>
-           var qs = new $xirsys.quickstart({
-               channel : "MyFirstApp",
-               ident : "samwar11",
-               secret : "bec4837c-40a6-11e9-a62a-0242ac110003",
-           });
-       </script>
-   </head>
-   <body>
-   </body>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+  <script>
+     $( document ).ready( function () {
+         $.ajax ({
+             url: "https://global.xirsys.net/_turn/MyFirstApp/",
+             type: "PUT",
+             async: false,
+             headers: {
+               "Authorization": "Basic " + btoa("samwar11:bec4837c-40a6-11e9-a62a-0242ac110003")
+             },
+             success: function (res){
+               console.log("ICE List: "+res.v.iceServers);
+             }
+         });
+     })
+  </script>
+</head>
+<body>
+</body>
 </html>
